@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private int count;
+    private int totalPickups;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         count = 0;
+        totalPickups = FindObjectsOfType<rotater>().Length;
         SetCountText();
         winText.text = "";
     }
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if  (count >= 12)
+        if  (count >= totalPickups)
         {
             winText.text = "You Win!";
         }
